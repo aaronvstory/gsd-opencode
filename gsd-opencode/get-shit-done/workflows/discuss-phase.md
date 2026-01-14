@@ -88,9 +88,9 @@ Continue to questioning.
 </step>
 
 <step name="questioning">
-**CRITICAL: ALL questions use AskUserQuestion. Never ask inline text questions.**
+**CRITICAL: ALL questions use question. Never ask inline text questions.**
 
-Present initial context from roadmap, then immediately use AskUserQuestion:
+Present initial context from roadmap, then immediately use question:
 
 ```
 Phase ${PHASE}: ${PHASE_NAME}
@@ -100,35 +100,35 @@ From the roadmap: ${PHASE_DESCRIPTION}
 
 **1. Open:**
 
-Use AskUserQuestion:
+Use question:
 - header: "Vision"
 - question: "How do you imagine this working?"
 - options: 2-3 interpretations based on the phase description + "Let me describe it"
 
 **2. Follow the thread:**
 
-Based on their response, use AskUserQuestion:
+Based on their response, use question:
 - header: "[Topic they mentioned]"
 - question: "You mentioned [X] — what would that look like?"
 - options: 2-3 interpretations + "Something else"
 
 **3. Sharpen the core:**
 
-Use AskUserQuestion:
+Use question:
 - header: "Essential"
 - question: "What's the most important part of this phase?"
 - options: Key aspects they've mentioned + "All equally important" + "Something else"
 
 **4. Find boundaries:**
 
-Use AskUserQuestion:
+Use question:
 - header: "Scope"
 - question: "What's explicitly out of scope for this phase?"
 - options: Things that might be tempting + "Nothing specific" + "Let me list them"
 
 **5. Capture specifics (optional):**
 
-If they seem to have specific ideas, use AskUserQuestion:
+If they seem to have specific ideas, use question:
 - header: "Specifics"
 - question: "Any particular look/feel/behavior in mind?"
 - options: Contextual options based on what they've said + "No specifics" + "Let me describe"
@@ -141,7 +141,7 @@ CRITICAL — What NOT to ask:
 
 **6. Decision gate:**
 
-Use AskUserQuestion:
+Use question:
 - header: "Ready?"
 - question: "Ready to capture this context, or explore more?"
 - options (ALL THREE REQUIRED):

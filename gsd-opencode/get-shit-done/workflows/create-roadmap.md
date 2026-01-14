@@ -271,7 +271,7 @@ Proceed directly to create_structure step.
 </if>
 
 <if mode="interactive" OR="missing OR custom with gates.confirm_roadmap true">
-Use AskUserQuestion:
+Use question:
 
 - header: "Ready"
 - question: "Ready to create the roadmap, or would you like me to ask more questions?"
