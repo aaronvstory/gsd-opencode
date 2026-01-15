@@ -7,6 +7,7 @@ allowed-tools:
   - Write
   - Bash
   - Glob
+  - desktop-commander_get_file_info
 ---
 
 <objective>
@@ -149,14 +150,9 @@ Wait for confirmation.
 <step name="delete_phase_directory">
 Delete target phase directory if it exists:
 
-```bash
-if [ -d ".planning/phases/{target}-{slug}" ]; then
-  rm -rf ".planning/phases/{target}-${slug}"
-  echo "Deleted: .planning/phases/{target}-${slug}/"
-fi
-```
-
-If directory doesn't exist, note: "No directory to delete (phase not yet created)"
+Use `desktop-commander_get_file_info(path=".planning/phases/{target}-{slug}")`:
+- If directory exists → Delete it using `rm -rf .planning/phases/{target}-{slug}` via Bash, then "Deleted: .planning/phases/{target}-{slug}/"
+- If not found → Note: "No directory to delete (phase not yet created)"
 </step>
 
 <step name="renumber_directories">

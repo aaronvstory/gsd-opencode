@@ -8,6 +8,8 @@ allowed-tools:
   - bash
   - glob
   - question
+  - desktop-commander_get_file_info
+  - desktop-commander_list_directory
 ---
 
 <objective>
@@ -129,14 +131,11 @@ Commit the todo and any updated state:
 
 ```bash
 git add .planning/todos/pending/[filename]
-[ -f .planning/STATE.md ] && git add .planning/STATE.md
-git commit -m "$(cat <<'EOF'
-docs: capture todo - [title]
-
-Area: [area]
-EOF
-)"
+git add .planning/STATE.md 2>/dev/null || true
+git commit -m "docs: capture todo - [title]"
 ```
+
+Note: Use `desktop-commander_get_file_info(path=".planning/STATE.md")` first to check if STATE.md exists before including in commit.
 
 Confirm: "Committed: docs: capture todo - [title]"
 </step>

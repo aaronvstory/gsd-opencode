@@ -1400,17 +1400,19 @@ Skip this step.
 <step name="check_phase_issues">
 **Check if issues were created during this phase:**
 
+Use `desktop-commander_get_file_info(path=".planning/ISSUES.md")` to check if ISSUES.md exists:
+- If exists → Read and search for issues from current phase
+- If not found → Skip this step (no issues file)
+
 ```bash
-# Check if ISSUES.md exists and has issues from current phase
-if [ -f .planning/ISSUES.md ]; then
-  grep -E "Phase ${PHASE}.*Task" .planning/ISSUES.md | grep -v "^#" || echo "NO_ISSUES_THIS_PHASE"
-fi
+# Cross-platform: use grep after confirming file exists
+grep -E "Phase ${PHASE}.*Task" .planning/ISSUES.md | grep -v "^#" || echo "NO_ISSUES_THIS_PHASE"
 ```
 
 **If issues were created during this phase:**
 
 ```
-📋 Issues logged during this phase:
+Issues logged during this phase:
 - ISS-XXX: [brief description]
 - ISS-YYY: [brief description]
 

@@ -8,6 +8,8 @@ allowed-tools:
   - bash
   - glob
   - question
+  - desktop-commander_get_file_info
+  - desktop-commander_list_directory
 ---
 
 <objective>
@@ -180,14 +182,11 @@ If todo was moved to done/, commit the change:
 ```bash
 git add .planning/todos/done/[filename]
 git rm --cached .planning/todos/pending/[filename] 2>/dev/null || true
-[ -f .planning/STATE.md ] && git add .planning/STATE.md
-git commit -m "$(cat <<'EOF'
-docs: start work on todo - [title]
-
-Moved to done/, beginning implementation.
-EOF
-)"
+git add .planning/STATE.md 2>/dev/null || true
+git commit -m "docs: start work on todo - [title]"
 ```
+
+Note: Use `desktop-commander_get_file_info(path=".planning/STATE.md")` first to check if STATE.md exists before including in commit.
 
 Confirm: "Committed: docs: start work on todo - [title]"
 </step>

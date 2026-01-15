@@ -29,12 +29,13 @@ Phase number: $ARGUMENTS (required)
 
 Validate phase exists in roadmap:
 
+Use `desktop-commander_get_file_info(path=".planning/ROADMAP.md")` to check if roadmap exists:
+- If exists → Read it and search for "Phase ${PHASE}:"
+- If not found → ERROR: No ROADMAP.md found
+
 ```bash
-if [ -f .planning/ROADMAP.md ]; then
-  cat .planning/ROADMAP.md | grep "Phase ${PHASE}:"
-else
-  cat .planning/ROADMAP.md | grep "Phase ${PHASE}:"
-fi
+# Cross-platform: use grep after confirming file exists
+cat .planning/ROADMAP.md | grep "Phase ${PHASE}:"
 ```
 
 **If phase not found:**

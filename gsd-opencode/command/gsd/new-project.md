@@ -6,6 +6,10 @@ allowed-tools:
   - Bash
   - Write
   - question
+  - desktop-commander_get_file_info
+  - desktop-commander_list_directory
+  - desktop-commander_start_search
+  - desktop-commander_get_more_search_results
 ---
 
 <objective>
@@ -34,30 +38,38 @@ Creates `.planning/` with PROJECT.md and config.json.
 **MANDATORY FIRST STEP — Execute these checks before ANY user interaction:**
 
 1. **Abort if project exists:**
-   ```bash
-   [ -f .planning/PROJECT.md ] && echo "ERROR: Project already initialized. Use /gsd:progress" && exit 1
-   ```
+   Use `desktop-commander_get_file_info(path=".planning/PROJECT.md")` to check if project already exists:
+   - If file info returned (file exists) → ERROR: Project already initialized. Use /gsd:progress. Stop execution.
+   - If error "not found" → Continue (project not initialized yet)
 
 2. **Initialize git repo in THIS directory** (required even if inside a parent repo):
-   ```bash
-   # Check if THIS directory is already a git repo root (handles .git file for worktrees too)
-   if [ -d .git ] || [ -f .git ]; then
-       echo "Git repo exists in current directory"
-   else
-       git init
-       echo "Initialized new git repo"
-   fi
-   ```
+   Use `desktop-commander_get_file_info(path=".git")` to check for existing repo:
+   - If exists (file or directory) → "Git repo exists in current directory"
+   - If not found → Run `git init` using Bash tool, then "Initialized new git repo"
 
 3. **Detect existing code (brownfield detection):**
-   ```bash
-   # Check for existing code files
-   CODE_FILES=$(find . -name "*.ts" -o -name "*.js" -o -name "*.py" -o -name "*.go" -o -name "*.rs" -o -name "*.swift" -o -name "*.java" 2>/dev/null | grep -v node_modules | grep -v .git | head -20)
-   HAS_PACKAGE=$([ -f package.json ] || [ -f requirements.txt ] || [ -f Cargo.toml ] || [ -f go.mod ] || [ -f Package.swift ] && echo "yes")
-   HAS_CODEBASE_MAP=$([ -d .planning/codebase ] && echo "yes")
-   ```
+   
+   **Find code files:**
+   Use `desktop-commander_start_search(path=".", pattern="*.ts", searchType="files")` and similar searches for .js, .py, .go, .rs, .swift, .java extensions.
+   Then use `desktop-commander_get_more_search_results(sessionId=...)` to get results.
+   Filter out any paths containing "node_modules" or ".git".
+   Store first 20 results as CODE_FILES.
+   
+   **Check for package manifests (HAS_PACKAGE):**
+   Use `desktop-commander_get_file_info` for each of these files:
+   - `package.json`
+   - `requirements.txt`
+   - `Cargo.toml`
+   - `go.mod`
+   - `Package.swift`
+   Set HAS_PACKAGE = "yes" if ANY of these exist.
+   
+   **Check for existing codebase map (HAS_CODEBASE_MAP):**
+   Use `desktop-commander_get_file_info(path=".planning/codebase")`:
+   - If exists → Set HAS_CODEBASE_MAP = "yes"
+   - If not found → Set HAS_CODEBASE_MAP = "no"
 
-   **You MUST run all bash commands above using the Bash tool before proceeding.**
+   **You MUST run all checks above using Desktop Commander tools before proceeding.**
 
 </step>
 

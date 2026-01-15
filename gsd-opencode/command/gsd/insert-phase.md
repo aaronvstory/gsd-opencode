@@ -6,6 +6,7 @@ allowed-tools:
   - Read
   - Write
   - Bash
+  - desktop-commander_get_file_info
 ---
 
 <objective>
@@ -62,14 +63,9 @@ fi
 <step name="load_roadmap">
 Load the roadmap file:
 
-```bash
-if [ -f .planning/ROADMAP.md ]; then
-  ROADMAP=".planning/ROADMAP.md"
-else
-  echo "ERROR: No roadmap found (.planning/ROADMAP.md)"
-  exit 1
-fi
-```
+Use `desktop-commander_get_file_info(path=".planning/ROADMAP.md")`:
+- If file info returned → ROADMAP exists, read its content for parsing
+- If error "not found" → ERROR: No roadmap found (.planning/ROADMAP.md). Stop execution.
 
 Read roadmap content for parsing.
 </step>

@@ -7,6 +7,7 @@ allowed-tools:
   - Bash
   - question
   - Glob
+  - desktop-commander_get_file_info
 ---
 
 <objective>
@@ -29,18 +30,18 @@ Roadmaps define what work happens in what order. Run after /gsd:new-project.
 <process>
 
 <step name="validate">
-```bash
-# Verify project exists
-[ -f .planning/PROJECT.md ] || { echo "ERROR: No PROJECT.md found. Run /gsd:new-project first."; exit 1; }
-```
+**Verify project exists:**
+Use `desktop-commander_get_file_info(path=".planning/PROJECT.md")`:
+- If file info returned → Continue (project exists)
+- If error "not found" → ERROR: No PROJECT.md found. Run /gsd:new-project first. Stop execution.
 </step>
 
 <step name="check_existing">
-Check if roadmap already exists:
+**Check if roadmap already exists:**
 
-```bash
-[ -f .planning/ROADMAP.md ] && echo "ROADMAP_EXISTS" || echo "NO_ROADMAP"
-```
+Use `desktop-commander_get_file_info(path=".planning/ROADMAP.md")`:
+- If file info returned → ROADMAP_EXISTS (proceed to ask user)
+- If error "not found" → NO_ROADMAP (continue to create)
 
 **If ROADMAP_EXISTS:**
 Use question:
