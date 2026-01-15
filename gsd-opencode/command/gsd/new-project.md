@@ -268,15 +268,10 @@ Create `.planning/config.json` with chosen mode and depth using `templates/confi
 
 ```bash
 git add .planning/PROJECT.md .planning/config.json
-git commit -m "$(cat <<'EOF'
-docs: initialize [project-name]
-
-[One-liner from PROJECT.md]
-
-Creates PROJECT.md with requirements and constraints.
-EOF
-)"
+git commit -m "docs: initialize [project-name] - [One-liner from PROJECT.md]"
 ```
+
+Note: Replace `[project-name]` and `[One-liner from PROJECT.md]` with actual values extracted during the questioning phase.
 
 </step>
 

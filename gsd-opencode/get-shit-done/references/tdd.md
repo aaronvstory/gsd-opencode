@@ -139,19 +139,12 @@ After completion, create SUMMARY.md with:
 When executing a TDD plan but no test framework is configured, set it up as part of the RED phase:
 
 **1. Detect project type:**
-```bash
-# JavaScript/TypeScript
-if [ -f package.json ]; then echo "node"; fi
 
-# Python
-if [ -f requirements.txt ] || [ -f pyproject.toml ]; then echo "python"; fi
-
-# Go
-if [ -f go.mod ]; then echo "go"; fi
-
-# Rust
-if [ -f Cargo.toml ]; then echo "rust"; fi
-```
+Use `desktop-commander_get_file_info` to check for each project type:
+- `package.json` exists → "node" (JavaScript/TypeScript)
+- `requirements.txt` or `pyproject.toml` exists → "python"
+- `go.mod` exists → "go"
+- `Cargo.toml` exists → "rust"
 
 **2. Install minimal framework:**
 | Project | Framework | Install |

@@ -25,9 +25,9 @@ The git log should read like a changelog of what shipped, not a diary of plannin
 
 <git_check>
 
-```bash
-[ -d .git ] && echo "GIT_EXISTS" || echo "NO_GIT"
-```
+Use `desktop-commander_get_file_info(path=".git")` to check for existing git repo:
+- If exists → GIT_EXISTS
+- If not found → NO_GIT
 
 If NO_GIT: Run `git init` silently. GSD projects always get their own repo.
 </git_check>
