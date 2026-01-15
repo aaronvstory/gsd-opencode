@@ -59,7 +59,14 @@ Not for:
 - Deploying (use CLI)
 - Creating resources (use CLI/API)
 - Running builds/tests (use Bash)
-- Writing files (use Write tool)
+- Writing files (use Write tool, or MCP tools on Windows - see below)
+
+**Windows File Operations:**
+On Windows, native Write/Edit tools fail with multi-line content. Use MCP tools instead:
+- **Serena MCP** (preferred): `serena_create_text_file`, `serena_replace_content`
+- **Desktop Commander** (fallback): `desktop-commander_write_file`, `desktop-commander_edit_block`
+
+See `~/.config/opencode/gsd-opencode/MAPPING.md` for complete Windows tool mappings.
 </claude_automates>
 
 <deviation_rules>

@@ -40,6 +40,43 @@ Examples:
 - `mcp__context7__*` → No change
 - `mcp__filesystem__read_file` → No change
 
+## Windows File Operations (CRITICAL)
+
+**On Windows, native `Write` and `Edit` tools FAIL with multi-line content** due to bash/CMD quoting issues.
+
+**ALWAYS use MCP tools for file operations on Windows:**
+
+| Native Tool | MCP Alternative (PRIMARY) | MCP Fallback |
+|-------------|---------------------------|--------------|
+| `Write` | `serena_create_text_file` | `desktop-commander_write_file` |
+| `Edit` | `serena_replace_content` | `desktop-commander_edit_block` |
+| `Read` | `serena_read_file` | `desktop-commander_read_file` |
+
+### Serena MCP (Preferred)
+
+Requires project activation first:
+```python
+serena_activate_project(project="project_folder_name")
+serena_create_text_file(relative_path="docs/file.md", content="# Multi-line\n\nContent works!")
+serena_replace_content(relative_path="file.md", mode="literal", needle="find", repl="replace")
+```
+
+### Desktop Commander MCP (Fallback)
+
+Use when Serena unavailable (no `.serena/project.yml`). Requires **absolute paths**:
+```python
+desktop-commander_write_file(path="C:\\full\\path\\file.md", content="# Content")
+desktop-commander_edit_block(file_path="C:\\path\\file.md", old_string="find", new_string="replace")
+```
+
+### Never Do This on Windows
+
+- `bash echo >` or `cat <<EOF` for file creation
+- Native `Write`/`Edit` for multi-line content
+- Heredocs in bash commands for file content
+
+**This applies to ALL GSD workflows and subagents.**
+
 ## Translation Rules
 
 1. **Tool Names**: Replace Claude Code tool names with OpenCode equivalents in all references
