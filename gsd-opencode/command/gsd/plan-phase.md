@@ -2,15 +2,6 @@
 name: gsd:plan-phase
 description: Create detailed execution plan for a phase (PLAN.md)
 argument-hint: "[phase]"
-allowed-tools:
-  - Read
-  - Bash
-  - Write
-  - Glob
-  - Grep
-  - question
-  - webfetch
-  - mcp__context7__*
 ---
 
 <objective>

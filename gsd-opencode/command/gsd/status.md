@@ -2,10 +2,6 @@
 name: gsd:status
 description: Check status of background agents from parallel execution
 argument-hint: "[--wait]"
-allowed-tools:
-  - read
-  - write
-  - bash
 ---
 
 <objective>

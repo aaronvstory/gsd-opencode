@@ -2,13 +2,6 @@
 name: gsd:plan-fix
 description: Plan fixes for UAT issues from verify-work
 argument-hint: "[plan, e.g., '04-02']"
-allowed-tools:
-  - Read
-  - Bash
-  - Write
-  - Glob
-  - Grep
-  - question
 ---
 
 <objective>

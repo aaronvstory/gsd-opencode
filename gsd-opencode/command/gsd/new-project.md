@@ -1,15 +1,6 @@
 ---
 name: gsd:new-project
 description: Initialize a new project with deep context gathering and PROJECT.md
-allowed-tools:
-  - Read
-  - Bash
-  - Write
-  - question
-  - desktop-commander_get_file_info
-  - desktop-commander_list_directory
-  - desktop-commander_start_search
-  - desktop-commander_get_more_search_results
 ---
 
 <objective>

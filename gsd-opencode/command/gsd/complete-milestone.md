@@ -2,10 +2,6 @@
 name: gsd:complete-milestone
 description: Archive completed milestone and prepare for next version
 argument-hint: <version>
-allowed-tools:
-  - Read
-  - Write
-  - Bash
 ---
 
 <objective>

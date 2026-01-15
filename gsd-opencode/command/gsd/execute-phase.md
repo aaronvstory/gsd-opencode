@@ -2,16 +2,6 @@
 name: gsd:execute-phase
 description: Execute all plans in a phase with wave-based parallelization
 argument-hint: "<phase-number>"
-allowed-tools:
-  - read
-  - write
-  - edit
-  - glob
-  - grep
-  - bash
-  - task
-  - todowrite
-  - question
 ---
 
 <objective>

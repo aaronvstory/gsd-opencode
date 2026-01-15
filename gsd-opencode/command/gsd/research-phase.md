@@ -2,15 +2,6 @@
 name: gsd:research-phase
 description: Research how to implement a phase before planning
 argument-hint: "[phase]"
-allowed-tools:
-  - Read
-  - Bash
-  - Glob
-  - Grep
-  - Write
-  - webfetch
-  - WebSearch
-  - mcp__context7__*
 ---
 
 <objective>

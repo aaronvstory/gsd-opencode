@@ -2,15 +2,6 @@
 name: gsd:execute-plan
 description: Execute a PLAN.md file
 argument-hint: "[path-to-PLAN.md]"
-allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Bash
-  - Glob
-  - Grep
-  - Task
-  - question
 ---
 
 <objective>

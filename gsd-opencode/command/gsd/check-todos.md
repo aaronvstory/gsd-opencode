@@ -2,14 +2,6 @@
 name: gsd:check-todos
 description: List pending todos and select one to work on
 argument-hint: [area filter]
-allowed-tools:
-  - read
-  - write
-  - bash
-  - glob
-  - question
-  - desktop-commander_get_file_info
-  - desktop-commander_list_directory
 ---
 
 <objective>

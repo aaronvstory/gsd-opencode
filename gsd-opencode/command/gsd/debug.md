@@ -2,14 +2,6 @@
 name: gsd:debug
 description: Systematic debugging with persistent state across context resets
 argument-hint: [issue description]
-allowed-tools:
-  - read
-  - write
-  - edit
-  - bash
-  - grep
-  - glob
-  - question
 ---
 
 <objective>

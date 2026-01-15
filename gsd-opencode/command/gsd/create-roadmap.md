@@ -1,13 +1,6 @@
 ---
 name: gsd:create-roadmap
 description: Create roadmap with phases for the project
-allowed-tools:
-  - Read
-  - Write
-  - Bash
-  - question
-  - Glob
-  - desktop-commander_get_file_info
 ---
 
 <objective>
